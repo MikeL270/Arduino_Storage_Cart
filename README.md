@@ -1,4 +1,4 @@
-# organizationbin
+# Arduino Storage Cart 
 
 ## Overview
 The arduino storage cart is a modularly built storage solution for small electronic components or really anything that fits in a tacklebox. Designed to be scalable and customizable, the system uses 3d printed innerlocking joints that fit into wooden dowels to create a skeleton to be filled with "tackle boxes." These boxes correspond to LEDs wired using category 5e UTP (unsheilded twisted pair) cable. In order to interface with the cart, an adafruit featherwing nrf52840 express mounted to a custom PCB (printed circuit board) running circuit python firmware interfaces with via ble with a self hosted sql databased server.
