@@ -37,9 +37,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 0.762,
-          "height": 1.524,
-          "width": 1.524
+          "drill": 0.9,
+          "height": 1.5,
+          "width": 1.5
         },
         "silk_line_width": 0.15,
         "silk_text_italic": false,
@@ -432,7 +432,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "pcbdraft-1.kicad_pro",
+    "filename": "pcbdraft-2.kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -577,7 +577,7 @@
   "sheets": [
     [
       "4064224d-5ea6-4862-a823-0569247d24bb",
-      ""
+      "Root"
     ]
   ],
   "text_variables": {}

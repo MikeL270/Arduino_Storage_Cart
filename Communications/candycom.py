@@ -1,7 +1,7 @@
-# Asyncio based rewrite of candycom
-# Written by Michael Lance & Thomas Baker
+# CandyCom adaptation for component storage cart
+# Written by Michael Lance
 # 3/5/2024
-# Updated: 3/26/2024
+# Updated: 4/16/2024
 #---------------------------------------------------------------------------------------------------#
 import asyncio
 import sys
