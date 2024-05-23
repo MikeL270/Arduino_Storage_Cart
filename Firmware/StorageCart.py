@@ -1,9 +1,9 @@
 # Library used to control an 8x8 LED matrix
 # Written by Michael Lance
 # Created: 5/16/2024
-# Last Modified: 5/20/2024
+# Last Modified: 5/23/2024
 #---------------------------------------------------------------------#
-# Modules used for interacting with arduino
+# Modules used for interacting with an arduino
 import board
 import digitalio
 
@@ -19,16 +19,16 @@ class LedMatrix:
     def led_on(self, ROW, COLUMN):
         # Set all pins off first
         for pin in self.PIN_ROWS.values():
-            pin.value = False
-
-        for pin in self.PIN_COLUMNS.values():
             pin.value = True
 
-        # Turn on the selected row
-        self.PIN_ROWS[ROW].value = True
+        for pin in self.PIN_COLUMNS.values():
+            pin.value = False
 
-        # Turn off the selected column
-        self.PIN_COLUMNS[COLUMN].value = False
+        # Turn on the selected power pin to true
+        self.PIN_COLUMNS[COLUMN].value = True
+
+        # Set the selected ground pin to false
+        self.PIN_ROWS[ROW].value = False
 
 #---------------------------------------------------------------------#
 

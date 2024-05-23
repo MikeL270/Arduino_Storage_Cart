@@ -10420,7 +10420,7 @@
 			(justify left bottom)
 		)
 	)
-	(gr_text "1.0\n"
+	(gr_text "2.0\n"
 		(at 268.224 194.056 0)
 		(layer "F.Cu")
 		(uuid "bdc5de5b-7393-46a1-a0ae-804eff65b492")
