@@ -12,7 +12,6 @@ The arduino storage cart is a modularly built storage solution for small electro
 - **Flask Web Server**: Extensible python webserver to allow for an easy to access front end across your entire network. (web facing deployment is NOT reccomended).
 - **NGINX Reverse Proxy**: Secure reverse proxy server to handle http and https requests inside your network.
 - **BLE Nordic Uart**: Serial BLE wrapper to manage communication between the storage cart and server.
-- **CandyCom adaptation**: Protocal adapted from candycom communication protocal developed for an inbre funded research project by Central Wyoming College. (more info ->) https://www.girrls-project.com/ .
 - **Python Multiprocessing**: Multiprocessing to allow asynchronous communications to occur independent from web server functions streamlines code. Mutex locks are used to share data between processes.
 
 ### Hardware Stack

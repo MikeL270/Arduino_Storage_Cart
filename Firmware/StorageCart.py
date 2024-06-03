@@ -19,16 +19,16 @@ class LedMatrix:
     def led_on(self, ROW, COLUMN):
         # Set all pins off first
         for pin in self.PIN_ROWS.values():
-            pin.value = True
-
-        for pin in self.PIN_COLUMNS.values():
             pin.value = False
 
+        for pin in self.PIN_COLUMNS.values():
+            pin.value = True
+
         # Turn on the selected power pin to true
-        self.PIN_COLUMNS[COLUMN].value = True
+        self.PIN_COLUMNS[COLUMN].value = False
 
         # Set the selected ground pin to false
-        self.PIN_ROWS[ROW].value = False
+        self.PIN_ROWS[ROW].value = True
 
 #---------------------------------------------------------------------#
 
@@ -37,25 +37,25 @@ class Board1(LedMatrix):
         super().__init__()  
         #Pin Rows
         self.PIN_ROWS = {
-            1: digitalio.DigitalInOut(board.MISO),
-            2: digitalio.DigitalInOut(board.A0),
-            3: digitalio.DigitalInOut(board.RX),
-            4: digitalio.DigitalInOut(board.A1),
-            5: digitalio.DigitalInOut(board.TX),
-            6: digitalio.DigitalInOut(board.A2),
-            7: digitalio.DigitalInOut(board.SDA),
-            8: digitalio.DigitalInOut(board.A3)
+            "1": digitalio.DigitalInOut(board.MISO),
+            "2": digitalio.DigitalInOut(board.A0),
+            "3": digitalio.DigitalInOut(board.RX),
+            "4": digitalio.DigitalInOut(board.A1),
+            "5": digitalio.DigitalInOut(board.TX),
+            "6": digitalio.DigitalInOut(board.A2),
+            "7": digitalio.DigitalInOut(board.SDA),
+            "8": digitalio.DigitalInOut(board.A3)
             }
         # Pin Columns
         self.PIN_COLUMNS = {
-            1: digitalio.DigitalInOut(board.MOSI),  
-            2: digitalio.DigitalInOut(board.A5),
-            3: digitalio.DigitalInOut(board.SCK),
-            4: digitalio.DigitalInOut(board.A4),
-            5: digitalio.DigitalInOut(board.D2),
-            6: digitalio.DigitalInOut(board.D0),
-            7: digitalio.DigitalInOut(board.D1),
-            8: digitalio.DigitalInOut(board.SCL)
+            "1": digitalio.DigitalInOut(board.MOSI),  
+            "2": digitalio.DigitalInOut(board.A5),
+            "3": digitalio.DigitalInOut(board.SCK),
+            "4": digitalio.DigitalInOut(board.A4),
+            "5": digitalio.DigitalInOut(board.D2),
+            "6": digitalio.DigitalInOut(board.D5),
+            "7": digitalio.DigitalInOut(board.D6),
+            "8": digitalio.DigitalInOut(board.SCL)
             }
         # configure each pin as output
         for pin in self.PIN_ROWS.values():
@@ -71,12 +71,12 @@ class Board2(LedMatrix):
         super().__init__()  
         #Pin Rows
         self.PIN_ROWS = {
-            1: digitalio.DigitalInOut(board.D6),
-            2: digitalio.DigitalInOut(board.D2),
-            3: digitalio.DigitalInOut(board.D5),
-            4: digitalio.DigitalInOut(board.D1),
-            5: digitalio.DigitalInOut(board.D5),
-            6: digitalio.DigitalInOut(board.D0),
+            1: digitalio.DigitalInOut(board.D13),
+            2: digitalio.DigitalInOut(board.D9),
+            3: digitalio.DigitalInOut(board.D12),
+            4: digitalio.DigitalInOut(board.D6),
+            5: digitalio.DigitalInOut(board.D11),
+            6: digitalio.DigitalInOut(board.D5),
             7: digitalio.DigitalInOut(board.D3),
             8: digitalio.DigitalInOut(board.SCL)
             }

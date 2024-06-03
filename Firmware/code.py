@@ -4,11 +4,14 @@
 # Updated: 5/23/2024
 #---------------------------------------------------------------------#
 import StorageCart
+import communications
+import time
 
-test_cart = StorageCart.Board1()
+test = communications.CommAgent()
+board = StorageCart.Board1()
 
+print("running")
 while True:
-    led_row = int(input())
-    led_collumn = int(input())
-    
-    test_cart.led_on(led_row, led_collumn)
+    message = test.return_payload().decode('utf-8')
+
+    board.led_on(message[0], message[2])
