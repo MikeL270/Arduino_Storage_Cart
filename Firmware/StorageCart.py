@@ -1,12 +1,18 @@
 # Library used to control an 8x8 LED matrix
 # Written by Michael Lance
 # Created: 5/16/2024
-# Last Modified: 5/23/2024
+# Last Modified: 6/04/2024
 #---------------------------------------------------------------------#
+"""
+        commands are strings with a predefined structure
+        commands structured as such: [command_type][arg]
+        ex: 1 == turn on all leds
+        ex 2: 2 1x1 == turn on led at row 1, column 1
+"""
+#---------------------------------------------------------------------#        
 # Modules used for interacting with an arduino
 import board
 import digitalio
-
 #---------------------------------------------------------------------#
 
 class LedMatrix:
@@ -15,20 +21,51 @@ class LedMatrix:
         self.PIN_ROWS = {}
         # Pin Columns
         self.PIN_COLUMNS = {}
+        
+        
+        # Initialize command handlers
+        self.command_handlers = {
+            "0": self.all_off,
+            "1": self.all_on,
+            "2": self.led_on,
+        }
+        
+    def led_on(self, grid_coordinate):
+        column = grid_coordinate[0]
+        row = grid_coordinate[2]
+        
+        # Turn off all LEDs first
+        self.all_off()
+        
+        # Turn on the selected power pin to true
+        self.PIN_COLUMNS[column].value = False
 
-    def led_on(self, ROW, COLUMN):
-        # Set all pins off first
+        # Set the selected ground pin to false
+        self.PIN_ROWS[row].value = True
+
+    def all_on(self, arg=None):
+        for pin in self.PIN_ROWS.values():
+            pin.value = True
+
+        for pin in self.PIN_COLUMNS.values():
+            pin.value = False
+
+    def all_off(self, arg=None):
         for pin in self.PIN_ROWS.values():
             pin.value = False
 
         for pin in self.PIN_COLUMNS.values():
             pin.value = True
 
-        # Turn on the selected power pin to true
-        self.PIN_COLUMNS[COLUMN].value = False
+    def decode_command(self, message):
+        command_type = message[0:1]
+        arg = message[2:] if len(message) > 2 else None
 
-        # Set the selected ground pin to false
-        self.PIN_ROWS[ROW].value = True
+        handler = self.command_handlers.get(command_type)
+        if handler:
+            handler(arg)
+        else:
+            print("Error: Unknown command type.")
 
 #---------------------------------------------------------------------#
 
