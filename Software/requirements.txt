@@ -1,0 +1,5 @@
+Flask
+Flask
+mysqlclient
+Flask-MySQLdb
+serial

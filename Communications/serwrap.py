@@ -3,13 +3,13 @@
 # 5/31/2024
 # Updated 5/31/2024
 #------------------------------------------------------------------------#
-
+import sys
 import time
 
-try:
+if sys.implementation.name != 'circuitpython':
     import serial
     import serial.tools.list_ports
-except ImportError:
+elif sys.implementation.name == 'circuitpython':
     import usb_cdc
 
 #------------------------------------------------------------------------#

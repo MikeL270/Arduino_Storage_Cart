@@ -1,0 +1,8 @@
+get dockerfile to pull communications.py and serwrap.py into the image and ignore the flask dev env
+create schema for database
+get webapp running as dockerfile to connect to the devboard
+create a button within the vue webapp that can turn on an led based on an input
+create a method to query the database and return an associated drawer's led coordinate, and turn on that led
+update readme.md with setup instructions for pulling the project from git and then running it with docker-compose
+
+CREATE MORE TODOS AFTER GET TO HERE

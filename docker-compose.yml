@@ -1,0 +1,49 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: flask_vue_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  flask:
+    build:
+      context: ./Software
+      dockerfile: Dockerfile
+    container_name: flask
+    environment:
+      FLASK_ENV: development
+      FLASK_APP: Flask.app  # Pointing to Flask/app.py
+    volumes:
+      - ./Software/Flask:/Flask
+      - /dev:/dev  # This will give the container access to the host's COM ports
+    expose:
+      - "5000"
+    depends_on:
+      - mysql
+    networks:
+      - backend
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./Software/Nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - flask
+    networks:
+      - backend
+
+volumes:
+  mysql_data:
+
+networks:
+  backend:
